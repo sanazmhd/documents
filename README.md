@@ -109,7 +109,6 @@ optional TLVs, from the following groups:
 Mandatory and optional TLVs for LLDP and LLDP-MED advertisements are shown in the table
 
 following:
-
 |
  | **DES DESCRIPTIONCRIPTION** | **T TLV TL TLV** |
 | --- | --- | --- |
