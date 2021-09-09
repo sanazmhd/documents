@@ -15,7 +15,7 @@ TSN Solution Components There are five main components in the TSN solution:
 • Centralized user configuration (CUC): An application that communicates with the CNC and the end devices. The CUC represents the control applications and the end devices. The CUC makes requests to the CNC for deterministic communication (TSN flows) with specific requirements for those flows. The CUC is an application that is vendor specific. Typically the vendor of the TSN end devices will supply a CUC for those end devices.
 
 In Figure 1, we can see all the components and how they relate.
-![](/C:\Users\User\Desktop/fig1.png)
+![](./C:\Users\User\Desktop/fig1.png)
 
 
 
