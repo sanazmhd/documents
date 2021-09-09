@@ -109,9 +109,9 @@ optional TLVs, from the following groups:
 Mandatory and optional TLVs for LLDP and LLDP-MED advertisements are shown in the table
 
 following:
+ **Mandatory Base TLVs—1EEE 802.1AB-2005** 
 | **TLV**| **DESCRIPTION** |
 | --- | --- |
-| **Mandatory Base TLVs—1EEE 802.1AB-2005** |
 |Chassis ID | Identifies the device&#39;S chassis, On this switch, this is the MAC address Of the switch or stack|
 |Port ID | Identifies the port that transmitted the LLDPDU |
  |Time To Live(TTL)| Indicates the length Of time in seconds for which the infOrmation received in the LLDPDIJ remains valid. If the value is greater than zero, the information is stored in the  LLDP remote system MIB. If the value is zero, the information previously received is no longer valid, and is removed from the MIB|
@@ -122,16 +122,17 @@ following:
  |Protocol IDs  | List Of protocols that are accessible through the port, for instance: <p>9000 (Loopback)</p> <p>00 26 42 42 03 00 00 00 (STP)</p> <p>00 27 42 42 03 00 00 02 (RSTP)</p> <p>00 69 42 42 03 00 00 03 (MSTP)</p> <p>888e01 (802.1x)</p> <p>aa aa 03 00 e0 2b 00 bb (EPSR)</p> <p>88090101 (LACP)</p <p>00540000e302 (loop protection)</p> <p>0800 (IPV4)</p> <p>0806 (ARP)</p> <p>86dd (IPV6)</p>|
  
  
-| **Optional Base TLVs—1EEE 802.1AB-2005** |
+ **Optional Base TLVs—1EEE 802.1AB-2005** 
 |Port description  | A description Of the port in alpha-numeric format|
 | --- | --- |
 |System name  | The system&#39;s assigned name in alpha-numeric format |
 |System description  | A description of the device in alpha-numeric format: This includes information about the device&#39;s hardware and operating system |
 |System capabilities  | The devices router and bridge functions, and whether or not these functions are currently enabled |
 | Management address | The address Of the local LLDP agent- This can be used to obtain information related to the local device |
-| **IEEE 802.1 Organizationally Specific TLVs (802.1 TLVs)-IEEE 802.1AB-2005 Annex F** |
-| Network Policy 
- |Network policy information configured on the port for connected media endpoint devices. The switch supports Application Type I : Voice, including the following network policy for connected voice devices to use for voice data:
+ **IEEE 802.1 Organizationally Specific TLVs (802.1 TLVs)-IEEE 802.1AB-2005 Annex F** 
+|Port description  | A description Of the port in alpha-numeric format|
+| --- | --- |
+| Network Policy |Network policy information configured on the port for connected media endpoint devices. The switch supports Application Type I : Voice, including the following network policy for connected voice devices to use for voice data:
 - Voice VLAN ID
 - Voice VLAN user Priority tagging
 - Voice VLAN Diffserv Code Point (DSCP) |
