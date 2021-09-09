@@ -110,7 +110,7 @@ Mandatory and optional TLVs for LLDP and LLDP-MED advertisements are shown in th
 
 following:
 
-|
+
  | **DES DESCRIPTIONCRIPTION** | **T TLV TL TLV** |
 | --- | --- | --- |
 | **Mandatory Base TLVs—1EEE 802.1AB-2005** |
