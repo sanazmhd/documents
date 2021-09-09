@@ -1,7 +1,4 @@
-# network discovery
-<h1>sanaz</h1>
-**Introduction**
-
+# Introduction
 TSN is the IEEE 802.1Q defined standard technology to provide deterministic messaging on standard Ethernet. TSN technology is centrally managed and delivers guarantees of delivery and minimized jitter using time scheduling for those real-time applications that require determinism.
 
 TSN Solution Components There are five main components in the TSN solution:
