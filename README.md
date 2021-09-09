@@ -16,9 +16,6 @@ TSN Solution Components There are five main components in the TSN solution:
 
 In Figure 1, we can see all the components and how they relate.
 ![](https://github.com/sanazmhd/documents/blob/main/fig1.png)
-
-
-
 Before the schedule can be successfully computed, the CNC must learn the physical topology. The CUC will initiate a request to the CNC to discover the physical topology. Using LLDP and a seed device, the CNC walks the physical topology, discovering each device and how they are connected. This includes the end devices that support LLDP(link layer discovery protocol). After completion, the CUC issues a requestof the CNC to return the discovered topology. The engineer at this point could verify that the CNC discovered the topology correctly if they choose. IEEE 802.1AB is an IEEE Standard for Local and metropolitan area networks - Station and Media Access Control Connectivity Discovery. In the next section this protocol will be described with more details.
 
 **What is LLDP (Link Layer Discovery Protocol)?**
@@ -39,7 +36,7 @@ LLDP provides the following benefits:
 **Frame Encapsulation**
 
 An LLDP PDU is encapsulated within an 802 frame that cooresponds to frame formatted to meet the requirements of an 802 Slow Protocol. The format is shown in the following figure:
-
+![](https://github.com/sanazmhd/documents/blob/main/fig1.png)
 ![](/C:\Users\User\Desktop/fig1.png)
 
 **Slow Protocols Multicast DA:**
