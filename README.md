@@ -33,7 +33,7 @@ LLDP provides the following benefits:
 - Enables discovery of stations in multi-vendor environments.
 - Provides device capability and supports optional system name and description, and management address.
 - Provides information that can be used to detect duplex and speed mismatches.
-- Discover devices with misconfigured or unreachable [IP addresses](https://www.routerfreak.com/ip-addressing-part-1/).
+- Discover devices with misconfigured or unreachable (IP addresses).
 
 **Frame Encapsulation**
 
@@ -89,11 +89,11 @@ LLDP transmits advertisements as packets called LLDP Data Units (LLDPDUs). An LL
 
 A single LLDPDU contains multiple TLVs. TLVs are short information elements that communicate data, such as variable length strings, in a standardized format. Each TLV advertises a single type of information, such as its device ID, type, or management addresses. The following table describes fields in a TLV.
 
-| **DESCRIPTION DESCRIPTION**| **FIELD** |
+| **FIELD**| **DESCRIPTION DESCRIPTION** |
 | --- | --- |
-| Identifies the kind of infornution, It consists of a 7-bit Type code. | Type|
-| Identifies the length of the information. It consists of a 9-bit value that specifies the number of bytes of data in the Value field. | Length |
-| Contains the actual value of the advertised information, This is a variable length data field. | Value |
+| Type | Identifies the kind of infornution, It consists of a 7-bit Type code.|
+| Length |Identifies the length of the information. It consists of a 9-bit value that specifies the number of bytes of data in the Value field.|
+| Value | Contains the actual value of the advertised information, This is a variable length data field.|
 
 LLDP sends mandatory TLVs in each advertisement; it can also be configured to send one or more
 
