@@ -121,6 +121,8 @@ following:
  |Port &amp; Protocol VLANs  | Whether Port &amp; Protocol VI-AN is supported and enabled on the port, and the list of Port &amp; Protocol VLAN identifiers |
  |VLAN Names  | List of VLAN names that the port is assigned to |
  |Protocol IDs  | List Of protocols that are accessible through the port, for instance: <p>9000 (Loopback)</p> <p>00 26 42 42 03 00 00 00 (STP)</p> <p>00 27 42 42 03 00 00 02 (RSTP)</p> <p>00 69 42 42 03 00 00 03 (MSTP)</p> <p>888e01 (802.1x)</p> <p>aa aa 03 00 e0 2b 00 bb (EPSR)</p> <p>88090101 (LACP)</p <p>00540000e302 (loop protection)</p> <p>0800 (IPV4)</p> <p>0806 (ARP)</p> <p>86dd (IPV6)</p>|
+ 
+ 
 | **Optional Base TLVs—1EEE 802.1AB-2005** |
 | --- |
 | A description Of the port in alpha-numeric format | Port description |
