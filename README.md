@@ -36,7 +36,9 @@ LLDP provides the following benefits:
 **Frame Encapsulation**
 
 An LLDP PDU is encapsulated within an 802 frame that cooresponds to frame formatted to meet the requirements of an 802 Slow Protocol. The format is shown in the following figure:
+
 ![](https://github.com/sanazmhd/documents/blob/main/fig2.png)
+
 **Slow Protocols Multicast DA:**
 
 The Slow Protocols Multicast destination address is 01-80-C2-00-00-02. This address is within the range reserved by ISO/IEC 15802-3 (MAC Bridges) for link-constrained protocols and will not be forwarded by conformant MAC bridges.
