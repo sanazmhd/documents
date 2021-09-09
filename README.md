@@ -231,7 +231,9 @@ A special procedure exists for the case in which a LLDP agent knows a particular
 In the event an interface, currently configured with LLDP message transmission enabled, either becomes disabled for LLDP activity, or the interface is administratively disabled, a final LLDP message is transmitted with a time to live value of zero (before the interface is disabled). In the event the LLDPOperStatus is transitioning to the disabled state, then this shutdown procedure should be executed for all local interfaces.
 
 **LLDP Shutdown Reception**
+
 ![](https://github.com/sanazmhd/documents/blob/main/fig4.png)
+
 After reception of a valid LLDP message with a time-to-live value equal to zero, the LLDP Agent must remove all information in the PTOPO MIB learned from the particular LLDP agent, which is associated with the indicated remote connection endpoint.
 
 **802.1ABdh**
