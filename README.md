@@ -155,7 +155,7 @@ such as this switch, this advertises the power that the port can supply over ama
  | 
 |Power Via MDI| The power-via-MDI capabilitiesOn devices that are LLDP-MED and POE-capable, we recommend using theExtended Power-via-MDI TLV instead of this TLV | 
 | Link Aggregation| Whether the link is capable of being aggregated, whether it is currently in anaggregation and if in an aggregation, the port of the aggregation|
-|Maximum Frame Size| The maximum supported 802.3 frame size that the sending device is capable of receiving—larger frames will be dropped | 
+|Maximum Frame Size| The maximum supported 802.3 frame size that the sending device is capable of receiving—larger frames will be dropped| 
 **Protocol Operation**
 
 An active LLDP Agent must perform the following tasks:
