@@ -128,8 +128,8 @@ following:
 |Port description  | A description of the device's port in alpha-numeric format|
 |System name  | The system&#39;s assigned name in alpha-numeric format |
 |System description  | A description of the device in alpha-numeric format: This includes information about the device&#39;s hardware and operating system |
-|System capabilities  | The devices router and bridge functions, and whether or not these functions are currently enabled |
-| Management address | The address Of the local LLDP agent- This can be used to obtain information related to the local device |
+|System capabilities  | The device's router and bridge functions, and whether or not these functions are currently enabled |
+| Management address | The address of the local LLDP agent- This can be used to obtain information related to the local device |
 
  **IEEE 802.1 Organizationally Specific TLVs (802.1 TLVs)-IEEE 802.1AB-2005 Annex F** 
 | **TLV**| **DESCRIPTION** |
