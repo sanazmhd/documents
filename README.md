@@ -123,8 +123,8 @@ following:
  
  
 | **Optional Base TLVs—1EEE 802.1AB-2005** |
-| --- |
 | A description Of the port in alpha-numeric format | Port description |
+| --- | --- |
 | The system&#39;s assigned name in alpha-numeric format | System name |
 | A description of the device in alpha-numeric format: This includes information about the device&#39;s hardware and operating system | System description |
 | The devices router and bridge functions, and whether or not these functions are currently enabled | System capabilities |
