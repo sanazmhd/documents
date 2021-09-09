@@ -123,7 +123,6 @@ following:
  
  
 | **Optional Base TLVs—1EEE 802.1AB-2005** |
-| --- |
 |Port description  | A description Of the port in alpha-numeric format|
 | --- | --- |
 |System name  | The system&#39;s assigned name in alpha-numeric format |
