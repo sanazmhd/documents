@@ -110,6 +110,7 @@ Mandatory and optional TLVs for LLDP and LLDP-MED advertisements are shown in th
 
 following:
 | **TLV**| **DESCRIPTION** |
+| --- | --- |
 | **Mandatory Base TLVs—1EEE 802.1AB-2005** |
 |Chassis ID | Identifies the device&#39;S chassis, On this switch, this is the MAC address Of the switch or stack|
 |Port ID | Identifies the port that transmitted the LLDPDU |
