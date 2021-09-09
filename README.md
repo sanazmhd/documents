@@ -36,9 +36,7 @@ LLDP provides the following benefits:
 **Frame Encapsulation**
 
 An LLDP PDU is encapsulated within an 802 frame that cooresponds to frame formatted to meet the requirements of an 802 Slow Protocol. The format is shown in the following figure:
-![](https://github.com/sanazmhd/documents/blob/main/fig1.png)
-![](/C:\Users\User\Desktop/fig1.png)
-
+![](https://github.com/sanazmhd/documents/blob/main/fig2.png)
 **Slow Protocols Multicast DA:**
 
 The Slow Protocols Multicast destination address is 01-80-C2-00-00-02. This address is within the range reserved by ISO/IEC 15802-3 (MAC Bridges) for link-constrained protocols and will not be forwarded by conformant MAC bridges.
@@ -62,8 +60,7 @@ The basic LLDP protocol data unit consists of a header, followed by a variable n
 **LLDP Header Format**
 
 The LLDP header is a 4 byte header, in network byte order, containing 3 fields, as shown in figure 2:
-
-![](RackMultipart20210909-4-12oj9qt_html_c9ba631983e0785a.png)
+![](https://github.com/sanazmhd/documents/blob/main/fig3.png)
 
 The LLDP header contains the following fields:
 
@@ -237,7 +234,7 @@ In the event an interface, currently configured with LLDP message transmission e
 
 After reception of a valid LLDP message with a time-to-live value equal to zero, the LLDP Agent must remove all information in the PTOPO MIB learned from the particular LLDP agent, which is associated with the indicated remote connection endpoint.
 
-![](RackMultipart20210909-4-12oj9qt_html_e2eb76b5a01977b5.png)
+![](https://github.com/sanazmhd/documents/blob/main/fig4.png)
 
 **802.1ABdh**
 
@@ -297,4 +294,4 @@ firmware
 
 • Address key exchange requirements
 **LLDPv2 Operation: Receiver Pacing**
-![](RackMultipart20210909-4-12oj9qt_html_87e828bb678bf86b.png)
+![](https://github.com/sanazmhd/documents/blob/main/fig5.png)
