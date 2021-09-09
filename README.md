@@ -123,42 +123,39 @@ following:
  
  
 | **Optional Base TLVs—1EEE 802.1AB-2005** |
-| A description Of the port in alpha-numeric format | Port description |
+| --- |
+|Port description  | A description Of the port in alpha-numeric format|
 | --- | --- |
-| The system&#39;s assigned name in alpha-numeric format | System name |
-| A description of the device in alpha-numeric format: This includes information about the device&#39;s hardware and operating system | System description |
-| The devices router and bridge functions, and whether or not these functions are currently enabled | System capabilities |
-| The address Of the local LLDP agent- This can be used to obtain information related to the local device | Management address |
+|System name  | The system&#39;s assigned name in alpha-numeric format |
+|System description  | A description of the device in alpha-numeric format: This includes information about the device&#39;s hardware and operating system |
+|System capabilities  | The devices router and bridge functions, and whether or not these functions are currently enabled |
+| Management address | The address Of the local LLDP agent- This can be used to obtain information related to the local device |
 | **IEEE 802.1 Organizationally Specific TLVs (802.1 TLVs)-IEEE 802.1AB-2005 Annex F** |
-| Network policy information configured on the port for connected media endpoint devices. The switch supports Application Type I : Voice, including the following network policy for connected voice devices to use for voice data:
+| Network Policy 
+ |Network policy information configured on the port for connected media endpoint devices. The switch supports Application Type I : Voice, including the following network policy for connected voice devices to use for voice data:
 - Voice VLAN ID
 - Voice VLAN user Priority tagging
-- Voice VLAN Diffserv Code Point (DSCP)
- | Network Policy |
-| Location information configured for the port, in one or more of the followingFormats:
+- Voice VLAN Diffserv Code Point (DSCP) |
+|Location Identification|Location information configured for the port, in one or more of the followingFormats:
 - Civic address
 - Coordinate-based LCI
-- Emergency Location Identification Number (ELIN)
- | Location Identification |
-| For PoE-capable devices, this TLV includes:
+- Emergency Location Identification Number (ELIN) |
+|Extended Power-via-MDI| For PoE-capable devices, this TLV includes:
 - Power Type field: Power Sourcing Entity (PSE)
 - Power Source field: current power source, either Primary Power Source or Backup Power Source
 - Power Priority field: power priority configured on the port
 - Power Value field: In TLVs transmitted by Power Sourcing Equipment (PSE)
-such as this switch, this advertises the power that the port can supply over amaximum length cable based on its current configuration (that is, it takes into account power losses over the cable). In TLVs received from Powered Device (PD) neighbors, the power value is the power the neighbor requests. | Extended Power-via-MDI |
-| The current values Of the following for the port:
+such as this switch, this advertises the power that the port can supply over amaximum length cable based on its current configuration (that is, it takes into account power losses over the cable). In TLVs received from Powered Device (PD) neighbors, the power value is the power the neighbor requests.|
+|MAC/PHY Configuration/ Status| The current values Of the following for the port:
 - Speed and duplex mode auto-negotiation support
 - Auto-negotiation Status
 - PMD (physical media dependent) auto-negotiation advertised capability
 - Operational MAU type
 - This TLV is always included in LLDP-MED advertisements
- | MAC/PHY Configuration/ Status
- |
-| The power-via-MDI capabilitiesOn devices that are LLDP-MED and POE-capable, we recommend using theExtended Power-via-MDI TLV instead of this TLV | Power Via MDI
- |
-| Whether the link is capable of being aggregated, whether it is currently in anaggregation and if in an aggregation, the port of the aggregation | Link Aggregation |
-| The maximum supported 802.3 frame size that the sending device is capable of receiving—larger frames will be dropped | Maximum Frame Size |
-
+ | 
+|Power Via MDI| The power-via-MDI capabilitiesOn devices that are LLDP-MED and POE-capable, we recommend using theExtended Power-via-MDI TLV instead of this TLV | 
+| Link Aggregation| Whether the link is capable of being aggregated, whether it is currently in anaggregation and if in an aggregation, the port of the aggregation|
+|Maximum Frame Size| The maximum supported 802.3 frame size that the sending device is capable of receiving—larger frames will be dropped | 
 **Protocol Operation**
 
 An active LLDP Agent must perform the following tasks:
