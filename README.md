@@ -124,16 +124,16 @@ following:
  
  
  **Optional Base TLVs—1EEE 802.1AB-2005** 
+ | --- | --- |
 |Port description  | A description Of the port in alpha-numeric format|
-| --- | --- |
 |System name  | The system&#39;s assigned name in alpha-numeric format |
 |System description  | A description of the device in alpha-numeric format: This includes information about the device&#39;s hardware and operating system |
 |System capabilities  | The devices router and bridge functions, and whether or not these functions are currently enabled |
 | Management address | The address Of the local LLDP agent- This can be used to obtain information related to the local device |
 
  **IEEE 802.1 Organizationally Specific TLVs (802.1 TLVs)-IEEE 802.1AB-2005 Annex F** 
+ | --- | --- |
 |Port description  | A description Of the port in alpha-numeric format|
-| --- | --- |
 |Network Policy |Network policy information configured on the port for connected media endpoint devices. The switch supports Application Type I : Voice, including the following network policy for connected voice devices to use for voice data:<p>- Voice VLAN ID</p> <p>- Voice VLAN user Priority tagging</p> <p>- Voice VLAN Diffserv Code Point (DSCP)</p>|
 |Location Identification|Location information configured for the port, in one or more of the followingFormats:<p>- Civic address</p> <p>- Coordinate-based LCI</p> <p>- Emergency Location Identification Number (ELIN)</p>|
 |Extended Power-via-MDI| For PoE-capable devices, this TLV includes: <p>- Power Type field: Power Sourcing Entity (PSE)</p> <p>- Power Source field: current power source, either Primary Power Source or Backup Power Source</p> <p>- Power Priority field: power priority configured on the port</p> <p>- Power Value field: In TLVs transmitted by Power Sourcing Equipment (PSE) such as this switch, this advertises the power that the port can supply over amaximum length cable based on its current configuration (that is, it takes into account power losses over the cable). In TLVs received from Powered Device (PD) neighbors, the power value is the power the neighbor requests.</p>|
