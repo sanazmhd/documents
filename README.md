@@ -233,9 +233,7 @@ In the event an interface, currently configured with LLDP message transmission e
 **LLDP Shutdown Reception**
 
 After reception of a valid LLDP message with a time-to-live value equal to zero, the LLDP Agent must remove all information in the PTOPO MIB learned from the particular LLDP agent, which is associated with the indicated remote connection endpoint.
-
 ![](https://github.com/sanazmhd/documents/blob/main/fig4.png)
-
 **802.1ABdh**
 
 802.1ABdh is an Standard for Local and Metropolitan Area Networks - Station and Media Access Control Connectivity Discovery and it is is underway in [IEEE802] that may extend the LLDP standard so that stations can announce a larger amount of information:
