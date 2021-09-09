@@ -39,7 +39,7 @@ LLDP provides the following benefits:
 
 An LLDP PDU is encapsulated within an 802 frame that cooresponds to frame formatted to meet the requirements of an 802 Slow Protocol. The format is shown in the following figure:
 
-![](RackMultipart20210909-4-12oj9qt_html_9d55eafda233eb17.png)
+![](/C:\Users\User\Desktop/fig1.png)
 
 **Slow Protocols Multicast DA:**
 
