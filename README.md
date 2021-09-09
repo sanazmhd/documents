@@ -123,7 +123,7 @@ following:
  |Protocol IDs  | List Of protocols that are accessible through the port, for instance9000 (Loopback)00 26 42 42 03 00 00 00 (STP)00 27 42 42 03 00 00 02 (RSTP)00 69 42 42 03 00 00 03 (MSTP)888e01 (802.1x)aa aa 03 00 e0 2b 00 bb (EPSR)88090101 (LACP)00540000e302 (loop protection)0800 (IPV4)0806 (ARP)86dd (IPV6)|
 
 | **Optional Base TLVs—1EEE 802.1AB-2005** |
-| --- | --- |
+| --- |
 | A description Of the port in alpha-numeric format | Port description |
 | The system&#39;s assigned name in alpha-numeric format | System name |
 | A description of the device in alpha-numeric format: This includes information about the device&#39;s hardware and operating system | System description |
