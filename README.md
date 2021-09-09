@@ -89,12 +89,10 @@ LLDP transmits advertisements as packets called LLDP Data Units (LLDPDUs). An LL
 
 A single LLDPDU contains multiple TLVs. TLVs are short information elements that communicate data, such as variable length strings, in a standardized format. Each TLV advertises a single type of information, such as its device ID, type, or management addresses. The following table describes fields in a TLV.
 
-| **DESCRIPTION DESCRIPTION**
- | **FIELD** |
+| **DESCRIPTION DESCRIPTION**| **FIELD** |
 | --- | --- |
-| Identifies the kind of infornution, It consists of a 7-bit Type code. | Type
- |
-| **Identifies the length of the information. It consists of a 9-bit value that specifies the number of bytes of data in the Value field.** | Length |
+| Identifies the kind of infornution, It consists of a 7-bit Type code. | Type|
+| Identifies the length of the information. It consists of a 9-bit value that specifies the number of bytes of data in the Value field. | Length |
 | Contains the actual value of the advertised information, This is a variable length data field. | Value |
 
 LLDP sends mandatory TLVs in each advertisement; it can also be configured to send one or more
