@@ -59,8 +59,9 @@ The basic LLDP protocol data unit consists of a header, followed by a variable n
 
 **LLDP Header Format**
 
-The LLDP header is a 4 byte header, in network byte order, containing 3 fields, as shown in figure 3:
 ![](https://github.com/sanazmhd/documents/blob/main/fig3.png)
+
+The LLDP header is a 4 byte header, in network byte order, containing 3 fields, as shown in figure 3:
 
 The LLDP header contains the following fields:
 
