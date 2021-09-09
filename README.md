@@ -120,7 +120,18 @@ following:
  | Port VLAN |VLAN identifier that the local port associates with untagged or priority taggedframes|
  |Port &amp; Protocol VLANs  | Whether Port &amp; Protocol VI-AN is supported and enabled on the port, and the list of Port &amp; Protocol VLAN identifiers |
  |VLAN Names  | List of VLAN names that the port is assigned to |
- |Protocol IDs  | List Of protocols that are accessible through the port, for instance9000 (Loopback)00 26 42 42 03 00 00 00 (STP)00 27 42 42 03 00 00 02 (RSTP)00 69 42 42 03 00 00 03 (MSTP)888e01 (802.1x)aa aa 03 00 e0 2b 00 bb (EPSR)88090101 (LACP)00540000e302 (loop protection)0800 (IPV4)0806 (ARP)86dd (IPV6)|
+ |Protocol IDs  | List Of protocols that are accessible through the port, for instance
+ 9000 (Loopback)
+ 00 26 42 42 03 00 00 00 (STP)
+ 00 27 42 42 03 00 00 02 (RSTP)
+ 00 69 42 42 03 00 00 03 (MSTP)
+ 888e01 (802.1x)
+ aa aa 03 00 e0 2b 00 bb (EPSR)
+ 88090101 (LACP)
+ 00540000e302 (loop protection)
+ 0800 (IPV4)
+ 0806 (ARP)
+ 86dd (IPV6)|
 
 | **Optional Base TLVs—1EEE 802.1AB-2005** |
 | --- |
