@@ -113,12 +113,12 @@ following:
  **Mandatory Base TLVs—1EEE 802.1AB-2005** 
 | **TLV**| **DESCRIPTION** |
 | --- | --- |
-|Chassis ID | Identifies the device&#39;S chassis, On this switch, this is the MAC address Of the switch or stack|
+|Chassis ID | Identifies the device&#39;S chassis, On this switch, this is the MAC address of the switch or stack|
 |Port ID | Identifies the port that transmitted the LLDPDU |
- |Time To Live(TTL)| Indicates the length Of time in seconds for which the infOrmation received in the LLDPDIJ remains valid. If the value is greater than zero, the information is stored in the  LLDP remote system MIB. If the value is zero, the information previously received is no longer valid, and is removed from the MIB|
+ |Time To Live(TTL)| Indicates the length of time in seconds for which the information received in the LLDPDIJ remains valid. If the value is greater than zero, the information is stored in the  LLDP remote system MIB. If the value is zero, the information previously received is no longer valid, and is removed from the MIB|
  |End of LLDPDU |Signals that there are no more TLVs in the LLDPDU|
  | Port VLAN |VLAN identifier that the local port associates with untagged or priority taggedframes|
- |Port &amp; Protocol VLANs  | Whether Port &amp; Protocol VI-AN is supported and enabled on the port, and the list of Port &amp; Protocol VLAN identifiers |
+ |Port &amp; Protocol VLANs  | Whether Port &amp; Protocol VLAN is supported and enabled on the port, and the list of Port &amp; Protocol VLAN identifiers |
  |VLAN Names  | List of VLAN names that the port is assigned to |
  |Protocol IDs  | List Of protocols that are accessible through the port, for instance: <p>9000 (Loopback)</p> <p>00 26 42 42 03 00 00 00 (STP)</p> <p>00 27 42 42 03 00 00 02 (RSTP)</p> <p>00 69 42 42 03 00 00 03 (MSTP)</p> <p>888e01 (802.1x)</p> <p>aa aa 03 00 e0 2b 00 bb (EPSR)</p> <p>88090101 (LACP)</p <p>00540000e302 (loop protection)</p> <p>0800 (IPV4)</p> <p>0806 (ARP)</p> <p>86dd (IPV6)</p>|
  
