@@ -1,4 +1,5 @@
-# Introduction
+**Introduction**
+
 TSN is the IEEE 802.1Q defined standard technology to provide deterministic messaging on standard Ethernet. TSN technology is centrally managed and delivers guarantees of delivery and minimized jitter using time scheduling for those real-time applications that require determinism.
 
 TSN Solution Components There are five main components in the TSN solution:
@@ -19,7 +20,7 @@ In Figure 1, we can see all the components and how they relate.
 
 Before the schedule can be successfully computed, the CNC must learn the physical topology. The CUC will initiate a request to the CNC to discover the physical topology. Using LLDP and a seed device, the CNC walks the physical topology, discovering each device and how they are connected. This includes the end devices that support LLDP(link layer discovery protocol). After completion, the CUC issues a requestof the CNC to return the discovered topology. The engineer at this point could verify that the CNC discovered the topology correctly if they choose. IEEE 802.1AB is an IEEE Standard for Local and metropolitan area networks - Station and Media Access Control Connectivity Discovery. In the next section this protocol will be described with more details.
 
-**What is LLDP (Link Layer Discovery Protocol)?**
+**What is LLDP**** (Link Layer Discovery Protocol)?**
 
 The Link Layer Discovery Protocol (LLDP) is a media independent protocol intended to be run on all IEEE 802 devices, allowing a LLDP agent to learn higher layer management reachability and connection endpoint information from adjacent devices. LLDP runs on all 802 media. Additionally the protocol runs over the data-link layer only, allowing two systems running different network layer protocols to learn about each other. Each device configured with an active LLDP Agent sends periodic messages to the Slow Protocols multicast MAC address as specificed by Std 802.3, 2000 Edition Annex 43B. The device sends the periodic messages on all physical interfaces enabled for LLDP transmission, and listens for LLDP messages on the same set on interfaces. Each LLDP message contains information identifying the source port as a connection endpoint identifier. It also contains at least one network address which can be used by an NMS to reach a management agent on the device (via the indicated source port). Each LLDP message contains a configurable time-to-live value, which tells the recipient LLDP agent when to discard each element of learned topology information.
 
@@ -87,18 +88,12 @@ LLDP transmits advertisements as packets called LLDP Data Units (LLDPDUs). An LL
 **Type-Length-Value (TLV)**
 
 A single LLDPDU contains multiple TLVs. TLVs are short information elements that communicate data, such as variable length strings, in a standardized format. Each TLV advertises a single type of information, such as its device ID, type, or management addresses. The following table describes fields in a TLV.
+
 | **DESCRIPTION DESCRIPTION**
  | **FIELD** |
 | --- | --- |
 | Identifies the kind of infornution, It consists of a 7-bit Type code. | Type
  |
-| **Identifies the length of the information. It consists of a 9-bit value that specifies the number of bytes of data in the Value field.** | Length |
-| Contains the actual value of the advertised information, This is a variable length data field. | Value |
-| --- | --- |
-| DESCRIPTION DESCRIPTION | FIELD |
-
-| Identifies the kind of infornution, It consists of a 7-bit Type code. | Type|
- 
 | **Identifies the length of the information. It consists of a 9-bit value that specifies the number of bytes of data in the Value field.** | Length |
 | Contains the actual value of the advertised information, This is a variable length data field. | Value |
 
@@ -117,7 +112,7 @@ Mandatory and optional TLVs for LLDP and LLDP-MED advertisements are shown in th
 
 following:
 
-
+|
  | **DES DESCRIPTIONCRIPTION** | **T TLV TL TLV** |
 | --- | --- | --- |
 | **Mandatory Base TLVs—1EEE 802.1AB-2005** |
@@ -335,7 +330,5 @@ firmware
 • Database authentication, is high want for IETF and other applications
 
 • Address key exchange requirements
-
 **LLDPv2 Operation: Receiver Pacing**
-
 ![](RackMultipart20210909-4-12oj9qt_html_87e828bb678bf86b.png)
