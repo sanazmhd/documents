@@ -109,29 +109,20 @@ optional TLVs, from the following groups:
 Mandatory and optional TLVs for LLDP and LLDP-MED advertisements are shown in the table
 
 following:
-|
- | **DES DESCRIPTIONCRIPTION** | **T TLV TL TLV** |
+
+| **DES DESCRIPTIONCRIPTION** | **T TLV TL TLV** |
 | --- | --- | --- |
 | **Mandatory Base TLVs—1EEE 802.1AB-2005** |
  |
 | --- | --- |
-|
- | Identifies the device&#39;S chassis, On this switch, this is the MAC address Of the switch or stack | Chassis ID |
-|
+| Identifies the device&#39;S chassis, On this switch, this is the MAC address Of the switch or stack | Chassis ID |
  | Identifies the port that transmitted the LLDPDU | Port ID |
-|
- | Indicates the length Of time in seconds for which the infOrmation received in the LLDPDIJ remains valid. If the value is greater than zero, the information is stored in the LLDP remote system MIB. If the value is zero, the information previously received is no longer valid, and is removed from the MIB | Time To Live(TTL) |
-|
+ | Indicates the length Of time in seconds for which the infOrmation received in the LLDPDIJ remains valid. If the value is greater than zero, the information is stored in the  LLDP remote system MIB. If the value is zero, the information previously received is no longer valid, and is removed from the MIB | Time To Live(TTL) |
  | Signals that there are no more TLVs in the LLDPDU | End of LLDPDU |
-|
  | VLAN identifier that the local port associates with untagged or priority taggedframes | Port VLAN |
-|
  | Whether Port &amp; Protocol VI-AN is supported and enabled on the port, and the list of Port &amp; Protocol VLAN identifiers | Port &amp; Protocol VLANs |
-|
  | List of VLAN names that the port is assigned to | VLAN Names |
-|
- | List Of protocols that are accessible through the port, for instance9000 (Loopback)00 26 42 42 03 00 00 00 (STP)00 27 42 42 03 00 00 02 (RSTP)00 69 42 42 03 00 00 03 (MSTP)888e01 (802.1x)aa aa 03 00 e0 2b 00 bb (EPSR)88090101 (LACP)00540000e302 (loop protection)0800 (IPV4)0806 (ARP)86dd (IPV6) | Protocol IDs
- |
+ | List Of protocols that are accessible through the port, for instance9000 (Loopback)00 26 42 42 03 00 00 00 (STP)00 27 42 42 03 00 00 02 (RSTP)00 69 42 42 03 00 00 03 (MSTP)888e01 (802.1x)aa aa 03 00 e0 2b 00 bb (EPSR)88090101 (LACP)00540000e302 (loop protection)0800 (IPV4)0806 (ARP)86dd (IPV6) | Protocol IDs|
 
 | **Optional Base TLVs—1EEE 802.1AB-2005** |
 | --- |
