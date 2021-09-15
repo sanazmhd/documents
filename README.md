@@ -18,7 +18,25 @@ In Figure 1, we can see all the components and how they relate.
 
 ![](https://github.com/sanazmhd/documents/blob/main/fig1.png)
 
-Before the schedule can be successfully computed, the CNC must learn the physical topology. The CUC will initiate a request to the CNC to discover the physical topology. Using LLDP and a seed device, the CNC walks the physical topology, discovering each device and how they are connected. This includes the end devices that support LLDP(link layer discovery protocol). After completion, the CUC issues a requestof the CNC to return the discovered topology. The engineer at this point could verify that the CNC discovered the topology correctly if they choose. IEEE 802.1AB is an IEEE Standard for Local and metropolitan area networks - Station and Media Access Control Connectivity Discovery. In the next section this protocol will be described with more details.
+Before the schedule can be successfully computed, the CNC must learn the physical topology. The CUC will initiate a request to the CNC to discover the physical topology. Using LLDP and a seed device, the CNC walks the physical topology, discovering each device and how they are connected. This includes the end devices that support LLDP(link layer discovery protocol). Being compatible with Ethernet, it is a fair assumption that installing a LLDP Agent on TSN devices does not have any compatibility issue. The CNC can use all the LLDP information to create a topology model using a script, and then send that information to the CUC that can implement some graphical tool to draw the topology.
+After completion, the CUC issues a requestof the CNC to return the discovered topology. The engineer at this point could verify that the CNC discovered the topology correctly if they choose. IEEE 802.1AB is an IEEE Standard for Local and metropolitan area networks - Station and Media Access Control Connectivity Discovery. In the next section this protocol will be described with more details.
+
+Using the simplified model as shown in figure above, the steps to create the TSN flow are described:
+
+1. CUC Initiates Physical Topology Discovery: Using LLDP and a seed device, the CNC explores the physical topology, discovering each device and how they are connected. This includes the end devices that support LLDP.
+2. CUC Requests Network Resources: Performed by the engineer responsible for defining the end to end communication. The engineer works out which end device (talker) has to communicate with other end devices (listener). The engineer is responsible for identifying all listeners, because there can be more than one for each TSN flow. The engineer can also define the latency requirements for the communication, the maximum size of the Ethernet packet that will be sent, and other dependencies (for example, whether there is a sequence order to the TSN flows). The CUC will gather this for all TSN flow requests and submit to the CNC using an API for accepting requests.
+3. Compute Schedule: The engineer (via the CUC) will initiate a request that the CNC compute the schedule. The CNC will return success or failure for the request (depending on how the petitions can be or not fulfilled with the present network topology/elements). The end schedule cannot be computed unless the CNC knows the physical topology.
+4. View Computation Results: Typically, the network engineer would want to view the schedule and verify before making it go live. The engineer (via the CUC) requests the CNC return the details of the computed schedule. This includes the details for each device involved in the TSN flows. The details include everything the end devices and bridges need to know for configuring TSN:
+
+• Unique identifiers for each TSN flow (destination MAC address, VLAN, CoS)
+
+• Start and end of transmit window at each hop (talkers and bridges)
+
+• Start and end of receive window at each hop (listeners and bridges)
+
+• End-to-end latency as computed
+
+5. Distribute Schedule: Satisfied that the schedule will work, the engineer (via the CUC) or an automatic process issues a request to the CNC to distribute the computed schedule to the TSN bridges. The CUC will also program the talkers and listeners for the TSN flows. The talkers are expected to transmit every TSN flow according to a schedule.
 
 **What is LLDP (Link Layer Discovery Protocol)?**
 
@@ -304,3 +322,51 @@ firmware
 **LLDPv2 Operation: Receiver Pacing**
 
 ![](https://github.com/sanazmhd/documents/blob/main/fig5.png)
+
+**Topology Discovery for SDN:**
+
+OpenFlow Discovery Protocol (OFDP) is one of the most common protocols used to discover the network topology in a data plane and then transmit it to the control plane for management. OFDP uses the Link Layer. Discovery Protocol (LLDP) message format for that purpose and the SDN-Controller sends a large number of LLDP advertisements at relatively large, fixed intervals to each active SDN-Switch port in the network to discover links between SDN-Switches. The SDNController uses Packet\_Out OpenFlow message to send the LLDP advertisement to each active SDN-Switch port, and the SDN-Switch on the other side (data layer) will send the link information by encapsulating the LLDP packet in a Packet\_In OpenFlow message. This process is cyclic every 10 s, which means that every 10 s the SDN-Controller will send several Packet\_Out messages equal to the number of active SDN-Switch ports The results of the previous processes are a burden on the resources of the SDN-Controller and are inefficient in detecting network topology changes in a timely manner. This leads to many studies in the literature that OFDP has critical limitations in terms of performance which makes it inefficient especially for large SDN networks. Another issue related to topology discovery between SDN and non-SDN networks.
+
+**The performance metrics of using lldp in SDN:**
+
+1. The number of packets sent and received by the SDN-Controller: the number of packets sent and received by the SDN-Controller is one of the factors that can be used as a performance metric. To discover the links between SDN-Switches, in each discovery round the SDN-Controller sends several LLDP Packet\_Out (POUT) messages equals to the number of active SDN-Switch ports in the network and will receive a number of Packet\_In (PIN) messages equals to twice of the number of links.
+2. the SDN-Controller will send three LLDP Packet\_Out messages equal to the number of active ports on SDN-Switch (s1) and it will receive one LLDP Packet\_In message to discover the oneway link from s1 and s2. The SDN-Controller also needs to send another three LLDP Packet\_Out messages to s2 to discover the one-way link from s2 to s1 and it also needs to receive an LLDP Packet\_In message. In total, the SDN-Controller will send six LLDP Packet\_Out messages (i.e., number of active ports on s1 and s2) and two LLDP Packet\_In (i.e., double of the number of links) messages to discover the link between s1 and s2.
+3. Accumulative CPU Utilization of SDN-Switches
+
+Another factor is the extent to which OFDP is using the CPU for SDN-Switches. SDN-Switch is an essential part of discovering the topology. The SDN-Switch receives LLDP Packet\_Out messages from the SDNController and sends them to its active ports. As a result, the number of packets sent or received by the SDN-Switches will also increase the CPU utilization ratio.
+
+1. Bandwidth Consumed
+
+there are two types of connections: between the SDN-Switches themselves and between SDNSwitches and the SDN-Controller. This metric is determined by the size of the exchanged OFDP packet to maintain the topology.Thus, this bandwidth can be especially important for measuring the performance of large networks and in-band control channels.
+
+1. Learning Time
+
+Learning time is the time the SDN-Controller needs to learn about topology changes. The discovery process will be repeated every discovery interval. The discovery interval is the time interval between two discovery rounds. The problem is that when a topology change occurs, the SDN-Controller will wait for the next discovery round to learn about new topology changes. This means that learning time is at least equal to the discovery interval.
+
+**Challenges of the Link Discovery**
+
+the SDN-Controller sends an LLDP packet encapsulated with a Packet-Out message to each active SDN-Switch port in the network. This discovery mechanism could present serious performance issues to SDN networks, especially of large networks. Therefore, we will summarize the OFDP link discovery challenges as follows:
+
+1. Overhead to SDN-Controller and Control Channel This point of the challenge has been clarified in details in the OFDP performance subsection, and therefore we will avoid re-explaining it
+2. Inefficient Link Failure Detection
+
+In most SDN-Controllers, each round of detections is performed approximately every 10 s and the SDN-Controller will become aware of new topology changes. This is a very long process for dynamic network environments where the changes to the topology occur frequently over a short period. This greatly affects the operation of network applications that depend entirely on the SDN-Controller&#39;s network topology. For example, if the learning time is long and there is a link failure on router links, the routing application will still redirect traffic on that path based on a legacy network topology, which means this will cause many packets to be dropped. This figure shows the relationship between learning time and topology changes. When a topology change occurs after the first discovery round, the SDN-Controller will wait for the next round to re-detect changes to the topological structure, which is too long. On the other hand, there is a suggestion to reduce the interval of discovery changes, but this will cause the number of the Packet\_Out messages to increase significantly, which in turn will increase the load the SDN-Controller and uses more bandwidth in the process of discovering the topology. In addition, an increase in the discovery interval means fewer LLDP messages and less overhead, but also means more time required to learn about new changes.
+
+**Sequrity issues**
+
+Adding security to the topology discovery processes also poses a new challenge in terms of Quality of Services (QoS). Secure discovery is a great idea to protect the real-time topology from attacks such as inserting malicious rules at SDN-Switch, denial of services at SDN-Controller, and man-in-themiddle in control channel , but it causes other issues related to the performance of the device and timeconsuming. Therefore, given the contrast of the two trends between network performance and security in sensitive issues (network topology discovery), the issue of balancing between them is also important. the SDN discovery topology protocol needs to provide the SDN-Controller with a real-time view of the network topology to meet the application and dynamic routing Quality of Service (QoS) demands.
+
+**SDN Topology Discovery improvements**
+
+- reducing the number of LLDP Packet\_Out messages to only one LLDP Packet\_Out message per SDN-Switch .
+- using a new packet format for link discovery by using minimal features of the frame and removing unnecessary features from the standard LLDP frame.
+- the discovery service can be shared between the SDN-Controller and SDN-Switches .
+- network state management can be shared between multiple SDN-Controllers.
+- centralized techniques, such as the Path Compute Element (PCE).
+- Using a sequence of signal checking to detect the links one by one.
+- transfering the control logic for topology discovery and its security from SDNController to SDNSwitch in order to reduce arithmetic operations from SDN-Controll.
+- Using idle and hard timeoutmechanism in the SDN-Controller to calculate the lifespan of the forwarding entry in the switch flow table
+- the control channel failure recovery
+- and…
+
+Based on the metrics announced in this section, each of these proposals has some limitations in one or more of these metrics. trade-off should be based on the criticality of the environment and topology change rate. In some environments, such as enterprise networks, the rate of topology change is low and less significant; thus, it is possible to increase the discovery interval. In contrast, in data-centers and transport networks, the rate of topology change is high and critical, thus, it is recommended to decrease the discovery interval as much as possible.
