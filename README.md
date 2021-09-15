@@ -335,11 +335,11 @@ OpenFlow Discovery Protocol (OFDP) is one of the most common protocols used to d
 
 Another factor is the extent to which OFDP is using the CPU for SDN-Switches. SDN-Switch is an essential part of discovering the topology. The SDN-Switch receives LLDP Packet\_Out messages from the SDNController and sends them to its active ports. As a result, the number of packets sent or received by the SDN-Switches will also increase the CPU utilization ratio.
 
-1. Bandwidth Consumed
+4. Bandwidth Consumed
 
 there are two types of connections: between the SDN-Switches themselves and between SDNSwitches and the SDN-Controller. This metric is determined by the size of the exchanged OFDP packet to maintain the topology.Thus, this bandwidth can be especially important for measuring the performance of large networks and in-band control channels.
 
-1. Learning Time
+5. Learning Time
 
 Learning time is the time the SDN-Controller needs to learn about topology changes. The discovery process will be repeated every discovery interval. The discovery interval is the time interval between two discovery rounds. The problem is that when a topology change occurs, the SDN-Controller will wait for the next discovery round to learn about new topology changes. This means that learning time is at least equal to the discovery interval.
 
@@ -352,7 +352,7 @@ the SDN-Controller sends an LLDP packet encapsulated with a Packet-Out message t
 
 In most SDN-Controllers, each round of detections is performed approximately every 10 s and the SDN-Controller will become aware of new topology changes. This is a very long process for dynamic network environments where the changes to the topology occur frequently over a short period. This greatly affects the operation of network applications that depend entirely on the SDN-Controller&#39;s network topology. For example, if the learning time is long and there is a link failure on router links, the routing application will still redirect traffic on that path based on a legacy network topology, which means this will cause many packets to be dropped. This figure shows the relationship between learning time and topology changes. When a topology change occurs after the first discovery round, the SDN-Controller will wait for the next round to re-detect changes to the topological structure, which is too long. On the other hand, there is a suggestion to reduce the interval of discovery changes, but this will cause the number of the Packet\_Out messages to increase significantly, which in turn will increase the load the SDN-Controller and uses more bandwidth in the process of discovering the topology. In addition, an increase in the discovery interval means fewer LLDP messages and less overhead, but also means more time required to learn about new changes.
 
-![](https://github.com/sanazmhd/documents/blob/main/fig.6.png)
+![](https://github.com/sanazmhd/documents/blob/main/fig6.png)
 
 **Sequrity issues**
 
