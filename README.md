@@ -474,11 +474,11 @@ Sync module for synchronization of the scheduler
 
 Module for Buffer with Incoming Module for TT and RC traffic
 
-5.**macTable **
+5.**macTable**
 
 Interface for MAC address tables
 
-6.**Interface Table**
+6.**InterfaceTable**
 
 Keeps the table of network interfaces.
 
@@ -498,9 +498,9 @@ AVB critical traffic control
 
 10.**beswitch**
 
-This module forwards frames (~EtherFrame) based on their destination MAC addresses to appropriate ports.
+This module forwards frames (EtherFrame) based on their destination MAC addresses to appropriate ports.
 
-It can handle: AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the control Info as EtherFrame
+It can handle AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the control Info as EtherFrame
 
 11.**Phy[size of(ethg)]**
 
