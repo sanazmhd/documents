@@ -372,3 +372,126 @@ Adding security to the topology discovery processes also poses a new challenge i
 - and…
 
 Based on the metrics announced in this section, each of these proposals has some limitations in one or more of these metrics. trade-off should be based on the criticality of the environment and topology change rate. In some environments, such as enterprise networks, the rate of topology change is low and less significant; thus, it is possible to increase the discovery interval. In contrast, in data-centers and transport networks, the rate of topology change is high and critical, thus, it is recommended to decrease the discovery interval as much as possible.
+**Introduction on 802.1Qbv and its functional parameters**
+
+Streams can have different priorities defining their traffic class, given by the 3 priority bits of the priority code point (PCP) of the IEEE 802.1Q header. IEEE 802.1Qbv defines a time-based shaper functionality enabling time-triggered communication at the egress ports. A time-aware shaper is essentially a gate enabling or disabling the transmission of frames for a queue following the specification of a periodic schedule.
+
+Figure 7 depicts a logical representation of a simplified 802.1Qbv-capable switch with three ports. The figure depicts a scenario in which network traffic traverses the switch from an ingress port to an egress port. Internally, the ports are connected to a filter distributing incoming frames to the associated queue of the egress port based on classification criteria like e.g. the priority code point (PCP) of the IEEE 802.1Q header.
+
+On regular switches with multiple ports, incoming traffic will be directed to the corresponding egress port by the switching engine. Every port will have a similar logical composition on egress as the one depicted, including a series of logical queues buffering the respective frames until their transmission. In the most generic representation, each 802.1Qbv queue has a timed gate associated to it enabling or disabling the transmission of frames according to a predefined static schedule. Hence, scheduled events determine at which time instants a queue is opened and traffic is forwarded to the egress port and at which time instants the queue is closed such that any pending traffic remains buffered. If multiple queues are opened at the same time, the queue priority determines which of the queues is allowed to forward frames.
+![](https://github.com/sanazmhd/documents/blob/main/fig7.png)
+One important characteristic is the capability of devices, namely, if they are scheduled or not. If the end-systems are not scheduled but switches are, frames from the end-nodes may arrive in any order to the switches. Therefore, the first switch on the route has to act as a synchronization gate. This synchronization is possible if there are enough queues to isolate flows arriving simultaneously, allowing thus each of them to be scheduled deterministically. Complementary, end-systems may be scheduled but switches are not. In such a case, switches act as delay elements but cannot control the time of forwarding frames. If end-systems and switches are scheduled, the scheduler can plan when to send individual frames of flows such that they arrive with a known order at the first switch and switches can control forwarding times.
+The number of queues per egress port, which translates to the number of different priorities that can be handled, affects the amount of traffic and the real-time properties to be guaranteed. Another important aspect is how the queues operate. Queues may follow a strict priority policy, meaning that the gate is always opened and the arbitration is purely based on their assigned priority. Using the time-gates, however, queues can be scheduled following a time-triggered (TT) paradigm, where the priority is overruled by the schedule, i.e., the schedule of the timed-gate defines the servicing order, not the priority. If queues are scheduled following a mutually exclusive pattern, i.e., no two queue gates are opened at the same time, the result is a fully deterministic forwarding policy.
+Having different queue types opens up the possibility to have two different types of traffic, namely scheduled and non-scheduled traffic. Scheduled traffic is assigned to the scheduled queues in order to guarantee latency and jitter requirements. Non-scheduled traffic is isolated from scheduled traffic within the priority queues of a device. Within the priority queues, non-scheduled flows may interfere with each other, but not with scheduled flows (since the associated scheduled queues always have higher priority).
+**Implementation of simple Queing model in omnet ++**
+![](https://github.com/sanazmhd/documents/blob/main/fig8.png)
+
+**Tsn node with qbv capability:**
+
+**Elements of nodes:**
+
+1. **status**
+
+Keeps track of the status of network node (up, down, etc.) for other modules, and also displays it as a small overlay icon on this module and on the module of the network node
+
+2. **scheduler**
+
+Scheduler for the device
+
+3. **sync**
+
+Sync module for synchronization of the scheduler
+
+4.**app[numApps]**
+
+Applications for the device
+
+5. **bgln**
+
+Represents a queue buffer for background traffic. Messages are forwarded immediately
+
+The buffer stores &quot;size&quot; messages in a fifo queue. The buffer removes and sends the first message in the queue. The when full the oldest frame is dropped before inserting the new frame. Can be configured to drop new frame instead using the dropNew parameter (default: false)
+
+6.**bgOut**
+
+Represents a queue buffer for background traffic. Messages are forwarded immediately
+
+The buffer stores &quot;size&quot; messages in a fifo queue. The buffer removes and sends the first message in the queue. The when full the oldest frame is dropped before inserting the new frame. Can be configured to drop new frame instead using the dropNew parameter (default: false)
+
+7.**checkedBuffer[numBuffer]**
+
+Module for Buffer with Incoming Module for TT and RC traffic
+
+8.**interface Table**
+
+Keeps the table of network interfaces.
+
+9.**srpProtocol**
+
+This module handles the Stream Reservation Protocol. SRP messages are sent and received through SRPEtherLLC and SRPRelay
+
+10.**avbCTC**
+
+AVB critical traffic control
+
+11.**encap**
+
+This module forwards frames (~EtherFrame) based on their destination MAC addresses to appropriate ports.
+
+It can handle: AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the controlInfo as EtherFrame
+
+12.**Phy[numPorts]**
+
+The IEEE8021QbvPHYPort is a compund module that contains the input Shaper, output Shaper and MAC (EtherMACFullDuplex) It represents a physical port for a IEEE 802.1Q Ethernet device (Switch or Host) with Qbv shaping
+TSN switch with IEEE 802.1 QVB capability
+![](https://github.com/sanazmhd/documents/blob/main/fig9.png)
+
+**Elements of nodes:**
+
+1.**Status**
+
+Keeps track of the status of network node (up, down, etc.) for other modules, and also displays it as a small overlay icon on this module and on the module of the network node.
+
+2.** scheduler**
+
+Scheduler for the device
+
+3.**sync**
+
+Sync module for synchronization of the scheduler
+
+4.** Checked Buffer[numBuffer]**
+
+Module for Buffer with Incoming Module for TT and RC traffic
+
+5.**macTable **
+
+Interface for MAC address tables
+
+6.**Interface Table**
+
+Keeps the table of network interfaces.
+
+7.**srpProtocol**
+
+This module handles the Stream Reservation Protocol
+
+SRP messages are sent and received through SRPEtherLLC and SRPRelay
+
+8.**srpTable**
+
+This module handles the mapping between ports and streams.
+
+9.**avbCTC**
+
+AVB critical traffic control
+
+10. **beswitch**
+
+This module forwards frames (~EtherFrame) based on their destination MAC addresses to appropriate ports.
+
+It can handle: AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the control Info as EtherFrame
+
+11.**Phy[size of(ethg)]**
+
+The IEEE8021QbvPHYPort is a compund module that contains the input Shaper, output Shaper and MAC (EtherMACFullDuplex) It represents a physical port for a IEEE 802.1Q Ethernet device (Switch or Host) with Qbv shaping
