@@ -462,7 +462,7 @@ TSN switch with IEEE 802.1 QVB capability
 
 Keeps track of the status of network node (up, down, etc.) for other modules, and also displays it as a small overlay icon on this module and on the module of the network node.
 
-2.** scheduler**
+2.**scheduler**
 
 Scheduler for the device
 
@@ -470,7 +470,7 @@ Scheduler for the device
 
 Sync module for synchronization of the scheduler
 
-4.** Checked Buffer[numBuffer]**
+4.**Checked Buffer[numBuffer]**
 
 Module for Buffer with Incoming Module for TT and RC traffic
 
@@ -496,7 +496,7 @@ This module handles the mapping between ports and streams.
 
 AVB critical traffic control
 
-10. **beswitch**
+10.**beswitch**
 
 This module forwards frames (~EtherFrame) based on their destination MAC addresses to appropriate ports.
 
