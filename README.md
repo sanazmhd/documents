@@ -440,23 +440,27 @@ Keeps the table of network interfaces.
 
 This module handles the Stream Reservation Protocol. SRP messages are sent and received through SRPEtherLLC and SRPRelay
 
-10.**avbCTC**
+10.**srpTable**
+
+This module handles the mapping between ports and streams.
+
+11.**avbCTC**
 
 AVB critical traffic control
 
-11.**encap**
+12.**encap**
 
-This module forwards frames (~EtherFrame) based on their destination MAC addresses to appropriate ports.
+This module forwards frames (EtherFrame) based on their destination MAC addresses to appropriate ports.
 
-It can handle: AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the controlInfo as EtherFrame
+It can handle AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the controlInfo as EtherFrame
 
-12.**Phy[numPorts]**
+13.**Phy[numPorts]**
 
 The IEEE8021QbvPHYPort is a compund module that contains the input Shaper, output Shaper and MAC (EtherMACFullDuplex) It represents a physical port for a IEEE 802.1Q Ethernet device (Switch or Host) with Qbv shaping
 TSN switch with IEEE 802.1 QVB capability
-![](https://github.com/sanazmhd/documents/blob/main/fig9.png)
+![](https://github.com/sanazmhd/documents/blob/main/fig10.png)
 
-**Elements of nodes:**
+**Elements of switch:**
 
 1.**Status**
 
@@ -502,6 +506,6 @@ This module forwards frames (EtherFrame) based on their destination MAC addresse
 
 It can handle AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the control Info as EtherFrame
 
-11.**Phy[size of(ethg)]**
+11.**Phy[sizeof(ethg)]**
 
 The IEEE8021QbvPHYPort is a compund module that contains the input Shaper, output Shaper and MAC (EtherMACFullDuplex) It represents a physical port for a IEEE 802.1Q Ethernet device (Switch or Host) with Qbv shaping
