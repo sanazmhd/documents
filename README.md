@@ -398,39 +398,41 @@ Having different queue types opens up the possibility to have two different type
 
 ![](https://github.com/sanazmhd/documents/blob/main/fig9.png)
 
-**Elements of nodes:**
+![](https://github.com/sanazmhd/documents/blob/main/fig10.png)
 
-1. **status**
+**Elements:**
 
-Keeps track of the status of network node (up, down, etc.) for other modules, and also displays it as a small overlay icon on this module and on the module of the network node
+1.**status**
 
-2. **scheduler**
+keeps track of the statu of network node (up,down,etc). Simulation is often used to study the effects of unexpected events like a router crash on the network. In order to accommodate such scenarios, lifecycle modeling of network nodes should be monitored. The up/down status of a node is changed via lifecycle operations.
 
-Scheduler for the device
+2.**scheduler**
 
-3. **sync**
+Scheduler for the device.
 
-Sync module for synchronization of the scheduler
+3.**sync**
+
+Sync module for synchronization of the scheduler.
 
 4.**app[numApps]**
 
-Applications for the device
+Applications for the device.
 
-5. **bgln**
+5.**bgln**
 
-Represents a queue buffer for background traffic. Messages are forwarded immediately
-
-The buffer stores &quot;size&quot; messages in a fifo queue. The buffer removes and sends the first message in the queue. The when full the oldest frame is dropped before inserting the new frame. Can be configured to drop new frame instead using the dropNew parameter (default: false)
+Represents a queue buffer for background traffic. Messages are forwarded immediately.
+The buffer stores &quot;size&quot; messages in a fifo queue. The buffer removes and sends the first message in the queue. The when full the oldest frame is dropped before inserting the new frame. Can be configured to drop new frame instead using the dropNew parameter (default: false).
 
 6.**bgOut**
 
-Represents a queue buffer for background traffic. Messages are forwarded immediately
-
-The buffer stores &quot;size&quot; messages in a fifo queue. The buffer removes and sends the first message in the queue. The when full the oldest frame is dropped before inserting the new frame. Can be configured to drop new frame instead using the dropNew parameter (default: false)
+Represents a queue buffer for background traffic. Messages are forwarded immediately.
+The buffer stores &quot;size&quot; messages in a fifo queue. The buffer removes and sends the first message in the queue. The when full the oldest frame is dropped before inserting the new frame. Can be configured to drop new frame instead using the dropNew parameter (default: false).
 
 7.**checkedBuffer[numBuffer]**
 
-Module for Buffer with Incoming Module for TT and RC traffic
+Module for Buffer with Incoming Module for TT and RC traffic.
+
+![](https://github.com/sanazmhd/documents/blob/main/fig11.png)
 
 8.**interface Table**
 
@@ -438,7 +440,7 @@ Keeps the table of network interfaces.
 
 9.**srpProtocol**
 
-This module handles the Stream Reservation Protocol. SRP messages are sent and received through SRPEtherLLC and SRPRelay
+This module handles the Stream Reservation Protocol. SRP messages are sent and received through SRPEtherLLC and SRPRelay.
 
 10.**srpTable**
 
@@ -446,66 +448,26 @@ This module handles the mapping between ports and streams.
 
 11.**avbCTC**
 
-AVB critical traffic control
+AVB critical traffic control which is based on IEEE8021QbvIncoming module and Includes scheduled gate control list.
 
 12.**encap**
 
 This module forwards frames (EtherFrame) based on their destination MAC addresses to appropriate ports.
-
-It can handle AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the controlInfo as EtherFrame
+It can handle AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the controlInfo as EtherFrame.
 
 13.**Phy[numPorts]**
 
-The IEEE8021QbvPHYPort is a compund module that contains the input Shaper, output Shaper and MAC (EtherMACFullDuplex) It represents a physical port for a IEEE 802.1Q Ethernet device (Switch or Host) with Qbv shaping
-TSN switch with IEEE 802.1 QVB capability
-![](https://github.com/sanazmhd/documents/blob/main/fig10.png)
+The IEEE8021QbvPHYPort is a compund module that contains the input Shaper, output Shaper and MAC (EtherMACFullDuplex) It represents a physical port for a IEEE 802.1Q Ethernet device (Switch or Host) with Qbv shaping TSN switch with IEEE 802.1 QVB capability.
 
-**Elements of switch:**
+14.**macTable**
 
-1.**Status**
+Interface for MAC address tables.
 
-Keeps track of the status of network node (up, down, etc.) for other modules, and also displays it as a small overlay icon on this module and on the module of the network node.
-
-2.**scheduler**
-
-Scheduler for the device
-
-3.**sync**
-
-Sync module for synchronization of the scheduler
-
-4.**Checked Buffer[numBuffer]**
-
-Module for Buffer with Incoming Module for TT and RC traffic
-
-5.**macTable**
-
-Interface for MAC address tables
-
-6.**InterfaceTable**
-
-Keeps the table of network interfaces.
-
-7.**srpProtocol**
-
-This module handles the Stream Reservation Protocol
-
-SRP messages are sent and received through SRPEtherLLC and SRPRelay
-
-8.**srpTable**
-
-This module handles the mapping between ports and streams.
-
-9.**avbCTC**
-
-AVB critical traffic control
-
-10.**beswitch**
+15.**beswitch**
 
 This module forwards frames (EtherFrame) based on their destination MAC addresses to appropriate ports.
+It can handle AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the control Info as EtherFrame.
 
-It can handle AVBs SRP frames. Incoming SRP frames are forwarded as SRP messages through srpOut to the SRProtocol module. Outgoing SRP messages coming through srpIn gate are forwarded according to the control Info as EtherFrame
+16.**Phy[sizeof(ethg)]**
 
-11.**Phy[sizeof(ethg)]**
-
-The IEEE8021QbvPHYPort is a compund module that contains the input Shaper, output Shaper and MAC (EtherMACFullDuplex) It represents a physical port for a IEEE 802.1Q Ethernet device (Switch or Host) with Qbv shaping
+The IEEE8021QbvPHYPort is a compund module that contains the input Shaper, output Shaper and MAC (EtherMACFullDuplex) It represents a physical port for a IEEE 802.1Q Ethernet device (Switch or Host) with Qbv shaping.
